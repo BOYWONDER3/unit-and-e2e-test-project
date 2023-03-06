@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678093679592" clover="3.2.0">
-  <project timestamp="1678093679593" name="All files">
-    <metrics statements="42" coveredstatements="36" conditionals="20" coveredconditionals="16" methods="24" coveredmethods="18" elements="86" coveredelements="70" complexity="0" loc="42" ncloc="42" packages="1" files="1" classes="1"/>
+<coverage generated="1678098400554" clover="3.2.0">
+  <project timestamp="1678098400554" name="All files">
+    <metrics statements="42" coveredstatements="42" conditionals="20" coveredconditionals="20" methods="24" coveredmethods="24" elements="86" coveredelements="86" complexity="0" loc="42" ncloc="42" packages="1" files="1" classes="1"/>
     <file name="mineswepper.js" path="C:\Users\User\Desktop\mineswepper test project\mineswepper.js">
-      <metrics statements="42" coveredstatements="36" conditionals="20" coveredconditionals="16" methods="24" coveredmethods="18"/>
+      <metrics statements="42" coveredstatements="42" conditionals="20" coveredconditionals="20" methods="24" coveredmethods="24"/>
       <line num="3" count="1" type="stmt"/>
       <line num="11" count="1" type="stmt"/>
       <line num="12" count="2" type="stmt"/>
@@ -34,13 +34,13 @@
       <line num="84" count="5" type="stmt"/>
       <line num="85" count="24" type="stmt"/>
       <line num="88" count="4" type="stmt"/>
-      <line num="92" count="0" type="stmt"/>
-      <line num="93" count="0" type="stmt"/>
-      <line num="94" count="0" type="stmt"/>
-      <line num="105" count="0" type="stmt"/>
-      <line num="106" count="0" type="stmt"/>
-      <line num="107" count="0" type="stmt"/>
-      <line num="113" count="92" type="cond" truecount="2" falsecount="0"/>
+      <line num="92" count="2" type="stmt"/>
+      <line num="93" count="4" type="stmt"/>
+      <line num="94" count="7" type="stmt"/>
+      <line num="105" count="2" type="stmt"/>
+      <line num="106" count="3" type="stmt"/>
+      <line num="107" count="5" type="stmt"/>
+      <line num="113" count="94" type="cond" truecount="2" falsecount="0"/>
       <line num="117" count="9" type="stmt"/>
       <line num="119" count="9" type="stmt"/>
       <line num="121" count="27" type="stmt"/>

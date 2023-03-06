@@ -1,5 +1,5 @@
-import { describe } from "node:test"
-import { createBoard, TILE_STATUSES, markedTilesCount, markTile, revealTile, checkWin } from "./mineswepper"
+
+import { createBoard, TILE_STATUSES, markedTilesCount, markTile, revealTile, checkWin, checkLose, positionMatch } from "./mineswepper"
 
 describe('#createBoard', () => {
     test('it creates a valid board', () => {
@@ -221,9 +221,63 @@ describe('#revealTile', () => {
 })
 
 describe('#checkWin', () => {
-    test('test with only hidden and marked mine tiles it returns true', () => {
+    test('with only hidden and marked mine tiles it returns true', () => {
         const board = [[
-            {}
-        ]]
+            { x: 0, y: 0, status: TILE_STATUSES.MARKED, mine: true},
+            { x: 0, y: 1, status: TILE_STATUSES.HIDDEN, mine: true}
+        ], [
+            { x: 1, y: 0, status: TILE_STATUSES.NUMBER, mine: false},
+            { x: 1, y: 1, status: TILE_STATUSES.NUMBER, mine: false}
+        ],]
+        expect(checkWin(board)).toBeTruthy()
+    })
+
+    test('with some hidden non-mine tiles it returns false', () => {
+        const board = [[
+            { x: 0, y: 0, status: TILE_STATUSES.MARKED, mine: true},
+            { x: 0, y: 1, status: TILE_STATUSES.HIDDEN, mine: true}
+        ], [
+            { x: 1, y: 0, status: TILE_STATUSES.HIDDEN, mine: false},
+            { x: 1, y: 1, status: TILE_STATUSES.NUMBER, mine: false}
+        ],]
+        expect(checkWin(board)).toBeFalsy()
+    })
+})
+
+describe('#checkLose', () => {
+    test('with no mines revealed it returns true', () => {
+        const board = [[
+            { x: 0, y: 0, status: TILE_STATUSES.MARKED, mine: true},
+            { x: 0, y: 1, status: TILE_STATUSES.HIDDEN, mine: true}
+        ], [
+            { x: 1, y: 0, status: TILE_STATUSES.HIDDEN, mine: false},
+            { x: 1, y: 1, status: TILE_STATUSES.HIDDEN, mine: false}
+        ],]
+        expect(checkLose(board)).toBeFalsy()
+    })
+
+    test('with a mine revealed it returns true', () => {
+        const board = [[
+            { x: 0, y: 0, status: TILE_STATUSES.MINE, mine: true},
+            { x: 0, y: 1, status: TILE_STATUSES.HIDDEN, mine: true}
+        ], [
+            { x: 1, y: 0, status: TILE_STATUSES.HIDDEN, mine: false},
+            { x: 1, y: 1, status: TILE_STATUSES.NUMBER, mine: false}
+        ],]
+        expect(checkLose(board)).toBeTruthy()
+    })
+})
+
+describe('#positionMatch', () => {
+    test('it returns true when the x and y properties are the same', () => {
+        const posA = { x: 1, y: 2}
+        const posB = { x: 1, y: 2}
+        expect(positionMatch(posA, posB)).toBeTruthy()
+    })
+
+    test('it returns false when the x or y properties are not the same', () => {
+        const posA = { x: 1, y: 2}
+        const posB = { x: 1, y: 1}
+        expect(positionMatch(posA, posB)).toBeFalsy()
     })
 })
